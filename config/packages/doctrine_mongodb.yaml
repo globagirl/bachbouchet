@@ -1,0 +1,11 @@
+# symfony/config/packages/doctrine_mongodb.yaml
+doctrine_mongodb:
+    connections:
+        default:
+            server: '%env(MONGODB_URL)%'
+            options:
+                username: '%env(MONGODB_USERNAME)%'
+                password: '%env(MONGODB_PASSWORD)%'
+                authSource: '%env(MONGO_INITDB_DATABASE)%'
+    default_database: '%env(MONGODB_DB)%'
+    # ...

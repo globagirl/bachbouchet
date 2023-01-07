@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Invitini
+{% endblock %}
+
+{% block body %}
+  <section class="w3l-inner-banner-main">
+    <div class="about-inner editContent">
+      <div class="container">
+        <ul class="breadcrumbs-custom-path">
+          <li class="right-side propClone">
+            <a href="{{path('home')}}" class="editContent">Home <span class="fa fa-angle-right" aria-hidden="true"></span></a> <p></p>
+          </li>
+          <li class="active editContent">Invitini</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="w3l-contact-info-main" id="contact">
+    <div class="contact-sec editContent">
+      <div class="container">
+        <div class="map-content-9">
+         <h4 class="header-name editContent">
+                    Recherche:
+                </h4>
+          <form action="#" method="post">
+            <div class="twice-two">
+              <input type="text" class="form-control" name="city" id="city" placeholder="Ville" required="" />
+              <button type="submit" class="btn btn-primary">Recherche</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="w3l-call-to-action_9">
+    <div class="call-w3 editContent">
+      <div class="container">
+        <div class="grids">
+          <div class="grids-content row">
+            {% for i in 1..15 %}
+              {% include 'include/hotel_card.html.twig' %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  Contact
+{% endblock %}
+
+{% block body %}
+<!-- breadcrumbs -->
+<section class="w3l-inner-banner-main">
+    <div class="about-inner editContent">
+        <div class="container">   
+            <ul class="breadcrumbs-custom-path">
+                <li class="right-side propClone"><a href="{{path('home')}}" class="editContent">Home <span class="fa fa-angle-right" aria-hidden="true"></span></a> <p></li>
+                <li class="active editContent">Contact</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- breadcrumbs //-->
+<section class="w3l-contact-info-main" id="contact">
+    <div class="contact-sec	editContent">
+        <div class="container">
+            <div class="main-titles-head text-center">
+                <h3 class="header-name editContent">
+                    Contacter-Nous
+                </h3>
+                <p class="tiltle-para editContent editContent">
+                Contactez notre équipe pour en savoir plus !
+                </p>
+            </div>
+            <div class="d-grid contact-view">
+                <div class="cont-details">
+                   <div class="cont-top">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-phone text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <p class="para"><a href="tel:+216 22 222 222">+216 22 222 222</a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-envelope-o text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <p class="para"><a href="mailto:kaoulatouati@gmail.com" class="mail">contact@bachbouchet.com</a></p>
+                        </div>
+                    </div>
+                    <div class="cont-top margin-up">
+                        <div class="cont-left text-center">
+                            <span class="fa fa-map-marker text-primary"></span>
+                        </div>
+                        <div class="cont-right">
+                            <p class="para"> 3000 Charguia 1,
+                            <br> Tunisie.</p>
+                        </div>
+                    </div>
+                </div>
+                 <div class="map-content-9">
+                    <form action="#" method="post">
+                        <div class="twice-two">
+                            <input type="text" class="form-control" name="w3lName" id="w3lName" placeholder="Nom" required="">
+                            <input type="email" class="form-control" name="w3lSender" id="w3lSender" placeholder="Email" required="">
+                        </div>
+                        <div class="twice">
+                            <input type="text" class="form-control" name="w3lSubject" id="w3lSubject" placeholder="Sujet" required="">
+                        </div>
+                        <textarea name="w3lMessage" class="form-control" id="w3lMessage" placeholder="Message" required=""></textarea>
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-contact">Envoyer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
