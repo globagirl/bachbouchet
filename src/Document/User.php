@@ -12,44 +12,38 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * @MongoDB\Document
- * MongoDB\Unique(fields="email")
+ * @ODM\MappedSuperclass
+ * ODM\Unique(fields="email")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @MongoDB\Id
-     */
+    /** @ODM\Id */
     protected $id;
 
     /**
-     * @MongoDB\Field(type="string")
+     * @ODM\Field(type="string")
      * @Assert\NotBlank()
      * @Assert\Email()
      */
     private $email;
 
     /**
-     * @MongoDB\Field(type="collection")
-     */
-    private $roles = [];
-
-    /**
      * @var string The hashed password
-     * @MongoDB\Field(type="string")
+     * @ODM\Field(type="string")
      */
     private $password;
 
-    /**
-     * @MongoDB\Field(type="string")
-     */
+    /** @ODM\Field(type="collection") */
+    private $roles = [];
+
+    /** @ODM\Field(type="string") */
     private $name;
 
-    /** @MongoDB\ReferenceOne(targetDocument=contact::class) */
-    private $contact;
+    /** @ODM\Field(type="date") */
+    private $joined_at;
 
-    /** @MongoDB\Field(type="date") */
-    private $join;
+    /** @ODM\EmbedOne(targetDocument=contact::class) */
+    private $contact;
 
     public function getEmail(): ?string
     {
@@ -82,6 +76,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = sha1($password);
+
+        return $this;
+    }
+
+    /**
      * @see UserInterface
      */
     public function getRoles(): array
@@ -96,21 +105,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
-
-        return $this;
-    }
-
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = sha1($password);
 
         return $this;
     }
@@ -150,19 +144,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return mixed
      */
-    public function getJoin()
+    public function getJoinedAt()
     {
-        return $this->join;
+        return $this->joined_at;
     }
 
     /**
-     * @param mixed $join
+     * @param mixed $joined_at
      */
-    public function setJoin($join): void
+    public function setJoinedAt($joined_at): void
     {
-        $this->join = $join;
+        $this->joined_at = $joined_at;
     }
-
 
     /**
      * Returning a salt is only needed, if you are not using a modern
@@ -183,4 +176,104 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+}
+
+/** @ODM\Document */
+class PetParent extends User
+{
+    /** @ODM\ReferenceMany(targetDocument=Pet::class) */
+    private $personalpet;
+
+    /** @ODM\ReferenceMany(targetDocument=adoptionoffer::class) */
+    private $adoptionoffer;
+}
+
+/** @ODM\Document */
+class Hebergeur extends User
+{
+    /** @ODM\ReferenceMany(targetDocument=invitationoffer::class) */
+    private $invitationoffer;
+}
+
+/**
+ * @ODM\EmbeddedDocument
+ */
+class contact
+{
+    /** @ODM\Field(type="string") */
+    private $address;
+
+    /** @ODM\Field(type="string") */
+    private $city;
+
+    /** @ODM\Field(type="string") */
+    private $zipcode;
+
+    /** @ODM\Field(type="string") */
+    private $phone;
+
+    /**
+     * @return mixed
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param mixed $address
+     */
+    public function setAddress($address): void
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param mixed $city
+     */
+    public function setCity($city): void
+    {
+        $this->city = $city;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getZipcode()
+    {
+        return $this->zipcode;
+    }
+
+    /**
+     * @param mixed $zipcode
+     */
+    public function setZipcode($zipcode): void
+    {
+        $this->zipcode = $zipcode;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param mixed $phone
+     */
+    public function setPhone($phone): void
+    {
+        $this->phone = $phone;
+    }
+
 }
