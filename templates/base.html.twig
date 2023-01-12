@@ -9,10 +9,10 @@
       {% endblock %}
     </title>
     {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-    <link rel="shortcut icon" href="images/homeicon.ico" />
+    <link rel="shortcut icon" href="{{ asset('images/homeicon.ico') }}" />
     {% block stylesheets %}
       <!-- Template CSS -->
-      <link rel="stylesheet" href="assets/css/style-starter.css" />
+      <link rel="stylesheet" href="{{ asset('assets/css/style-starter.css') }}" />
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Josefin+Slab:400,700,700i&display=swap') }}" rel="stylesheet" />
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap') }}" rel="stylesheet" />
       <link href="{{ asset('https://fonts.googleapis.com/css?family=Open+Sans&display=swap') }}" rel="stylesheet" />
@@ -23,14 +23,19 @@
       <header class="absolute-top">
         <div class="container">
           <nav class="navbar navbar-expand-lg navbar-light">
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-paw mr-2" aria-hidden="true"></span>Bachbouchet</a></h1>
+            <h1><a class="navbar-brand" href="{{path('home')}}"><span class="fa fa-paw mr-2" aria-hidden="true"></span>Bachbouchet</a></h1>
             <button class="navbar-toggler bg-gradient collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="fa icon-expand fa-bars"></span>
               <span class="fa icon-close fa-times"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-            {% include 'include/menu.html.twig' %}
+                {% if session.foo is defined %}
+                    {% include '_include/_menu.html.twig' %}
+                {% else %}
+                    {% include '_include/_menu_public.html.twig' %}
+                {% endif %}
+
             </div>
           </nav>
         </div>
@@ -45,7 +50,7 @@
         <div class="container py-lg-4">
           <div class="row footer-top-29">
             <div class="col-lg-5 col-md-6 col-sm-12 footer-list-29 footer-1">
-              <h2><a href="index.html" class=""><span class="fa fa-paw mr-2" aria-hidden="true"></span>Bachbouchet</a></h2>
+              <h2><a href="{{path('home')}}" class=""><span class="fa fa-paw mr-2" aria-hidden="true"></span>Bachbouchet</a></h2>
               <p>About us ...</p>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-5 footer-list-29 footer-3">

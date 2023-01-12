@@ -3,21 +3,19 @@
     <a class="nav-link" href="{{path('home')}}">Home <span class="sr-only">(current)</span></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{path('invitini')}}">Invitini</a>
+    <a class="nav-link" href="{{path('invitini_home')}}">Invitini</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="{{path('adoptini')}}">Adoptini</a>
+    <a class="nav-link" href="{{path('adoptini_home')}}">Adoptini</a>
   </li>
   <li class="nav-item">
       <a class="nav-link" href="{{path('contact')}}">Contact</a>
     </li>
-  {% if session.foo is defined %}
+
     <li class="nav-item">
-      <a class="nav-link" href="#">Logout</a>
+      <a class="nav-link" href="{{path('login')}}">Login</a>
     </li>
-  {% else %}
-    <li class="nav-item">
-      <a class="nav-link" href="#">Login</a>
-    </li>
-  {% endif %}
+  <li class="nav-item">
+    <a class="nav-link" href="{{path('signup')}}">Signup</a>
+  </li>
 </ul>
