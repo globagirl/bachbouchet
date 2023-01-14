@@ -27,7 +27,7 @@ class PublicController extends AbstractController
      */
     public function contact(): Response
     {
-        return $this->render('contact.html.twig');
+        return $this->render('Public/contact.html.twig');
     }
 
     /**
