@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Document\Produit;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

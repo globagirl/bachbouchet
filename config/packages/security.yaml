@@ -7,7 +7,9 @@ security:
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
-            id: App\Security\UserProvider
+#            id: App\Security\UserProvider
+            mongodb: {class: App\Document\User, property: email}
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/

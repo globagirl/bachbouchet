@@ -2,21 +2,19 @@
 
 namespace App\Document;
 
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
+
 use Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique as MongoDBUnique;
 
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
-use DateTime;
-
 /**
  * @ODM\MappedSuperclass
- * ODM\Unique(fields="email")
+ * @MongoDBUnique(fields="email")
  */
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface
 {
     /** @ODM\Id */
     protected $id;
@@ -179,11 +177,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 }
 
-/** @ODM\Document */
+/** @ODM\Document*/
 class PetParent extends User
 {
-    /** @ODM\ReferenceMany(targetDocument=Pet::class) */
-    private $personalpet;
+    /** @ODM\EmbedMany(targetDocument=Pet::class) */
+    private $pet;
 
     /** @ODM\ReferenceMany(targetDocument=adoptionoffer::class) */
     private $adoptionoffer;
@@ -191,17 +189,17 @@ class PetParent extends User
     /**
      * @return mixed
      */
-    public function getPersonalpet()
+    public function getPet()
     {
-        return $this->personalpet;
+        return $this->pet;
     }
 
     /**
-     * @param mixed $personalpet
+     * @param mixed $pet
      */
-    public function setPersonalpet($personalpet): void
+    public function setPet($pet): void
     {
-        $this->personalpet = $personalpet;
+        $this->pet = $pet;
     }
 
     /**
@@ -234,6 +232,9 @@ class Hebergeur extends User
  */
 class contact
 {
+    /** @ODM\Id */
+    protected $id;
+
     /** @ODM\Field(type="string") */
     private $address;
 
