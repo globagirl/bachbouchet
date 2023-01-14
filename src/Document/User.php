@@ -3,13 +3,14 @@
 namespace App\Document;
 
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use Doctrine\Bundle\MongoDBBundle\Validator\Constraints\Unique as MongoDBUnique;
 
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use DateTime;
 
 /**
  * @ODM\MappedSuperclass
@@ -186,6 +187,39 @@ class PetParent extends User
 
     /** @ODM\ReferenceMany(targetDocument=adoptionoffer::class) */
     private $adoptionoffer;
+
+    /**
+     * @return mixed
+     */
+    public function getPersonalpet()
+    {
+        return $this->personalpet;
+    }
+
+    /**
+     * @param mixed $personalpet
+     */
+    public function setPersonalpet($personalpet): void
+    {
+        $this->personalpet = $personalpet;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdoptionoffer()
+    {
+        return $this->adoptionoffer;
+    }
+
+    /**
+     * @param mixed $adoptionoffer
+     */
+    public function setAdoptionoffer($adoptionoffer): void
+    {
+        $this->adoptionoffer = $adoptionoffer;
+    }
+
 }
 
 /** @ODM\Document */
