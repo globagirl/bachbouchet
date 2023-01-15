@@ -1,0 +1,1 @@
+<?php/** * Created by PhpStorm. * User: khaoula * Date: 1/14/2023 * Time: 8:36 PM */namespace App\Service;use Doctrine\ODM\MongoDB\DocumentManager;class UserService{    protected $dm;    public function __construct(DocumentManager $dm)    {        $this->dm = $dm;    }    public function createUser(){    }}

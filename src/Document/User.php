@@ -108,17 +108,11 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     */
     public function setName($name): void
     {
         $this->name = $name;
@@ -177,48 +171,7 @@ class User implements UserInterface
     }
 }
 
-/** @ODM\Document*/
-class PetParent extends User
-{
-    /** @ODM\EmbedMany(targetDocument=Pet::class) */
-    private $pet;
 
-    /** @ODM\ReferenceMany(targetDocument=adoptionoffer::class) */
-    private $adoptionoffer;
-
-    /**
-     * @return mixed
-     */
-    public function getPet()
-    {
-        return $this->pet;
-    }
-
-    /**
-     * @param mixed $pet
-     */
-    public function setPet($pet): void
-    {
-        $this->pet = $pet;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAdoptionoffer()
-    {
-        return $this->adoptionoffer;
-    }
-
-    /**
-     * @param mixed $adoptionoffer
-     */
-    public function setAdoptionoffer($adoptionoffer): void
-    {
-        $this->adoptionoffer = $adoptionoffer;
-    }
-
-}
 
 /** @ODM\Document */
 class Hebergeur extends User
