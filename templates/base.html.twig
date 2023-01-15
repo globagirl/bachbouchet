@@ -30,11 +30,9 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                {% if session.foo is defined %}
-                    {% include '_include/_menu.html.twig' %}
-                {% else %}
+                {% block menu %}
                     {% include '_include/_menu_public.html.twig' %}
-                {% endif %}
+                {% endblock %}
 
             </div>
           </nav>
@@ -51,14 +49,14 @@
           <div class="row footer-top-29">
             <div class="col-lg-5 col-md-6 col-sm-12 footer-list-29 footer-1">
               <h2><a href="{{path('home')}}" class=""><span class="fa fa-paw mr-2" aria-hidden="true"></span>Bachbouchet</a></h2>
-              <p>About us ...</p>
+              <p>We are pets  L O V E R S</p>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-5 footer-list-29 footer-3">
               <h6 class="footer-title-29">Get in Touch</h6>
 
               <div class="column2">
                 <div class="href1">
-                  <span>E-mail:</span><a href="mailto:contact@bachbouchet.com">contact@bachbouchet.com</a>
+                  <span>Email:</span><a href="mailto:contact@bachbouchet.com">contact@bachbouchet.com</a>
                 </div>
                 <div class="href2">
                   <span>Phone:</span><a href="tel:+(216)-00 222 222">+(216)-00 222 222</a>

@@ -2665,6 +2665,24 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     -ms-background-size: cover; }
+.w3l-teams-15 .three-img {
+  background: url(../images/22.jpg) no-repeat center;
+  padding: 20px 20px;
+  height: 170px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover; }
+.w3l-teams-15 .five-img {
+  background: url(../images/44.jpg) no-repeat center;
+  padding: 20px 20px;
+  height: 170px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover; }
   .w3l-teams-15 .pet-grid:before {
     position: absolute;
     content: "";
