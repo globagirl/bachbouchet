@@ -1,0 +1,50 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}
+    list
+{% endblock %}
+{% block body %}
+    <section class="w3l-contact-info-main" id="contact">
+        <div class="contact-sec	editContent">
+            <div class="container">
+                <div class="main-titles-head text-center">
+                    <h3 class="header-name editContent">
+                        list
+                    </h3>
+                    <table class="table list_pets">
+                        <thead>
+                        <tr>
+                            <th>offer No</th>
+                            <th>created at </th>
+                            <th>status</th>
+                            <th>demandeur</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in [1..5] %}
+                            <tr>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td><a href="#">confirm</a>
+                                    {#{{ path('app_faculte_show', {'id': offer.id}) }}#}
+                                    <br>
+                                    <a href="#">cancel</a>
+                                    {#{{ path('app_faculte_edit', {'id': offer.id}) }}#}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

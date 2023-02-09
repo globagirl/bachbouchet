@@ -1,0 +1,58 @@
+{% extends 'base2.html.twig' %}
+
+{% block title %}
+    Liste pets
+{% endblock %}
+{% block body %}
+    <section class="w3l-contact-info-main" id="contact">
+        <div class="contact-sec	editContent">
+            <div class="container">
+                <div class="main-titles-head text-center">
+                    <h3 class="header-name editContent">
+                        List
+                    </h3>
+                    <table class="table list_pets">
+                        <thead>
+                        <tr>
+                            <th>Pet No</th>
+                            <th>pseudo</th>
+                            <th>gender</th>
+                            <th>race</th>
+                            <th>color</th>
+                            <th>vacciné</th>
+                            <th>birthdate</th>
+                            <th>discription</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in [1..8] %}
+                            <tr>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td>xxxxx</td>
+                                <td><a href="#">show</a>
+                                    {#{{ path('app_faculte_show', {'id': pet.id}) }}#}
+                                    <br>
+                                    <a href="#">edit</a>
+                                    {#{{ path('app_faculte_edit', {'id': pet.id}) }}#}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="6">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

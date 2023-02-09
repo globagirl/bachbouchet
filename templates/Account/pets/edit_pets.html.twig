@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block body %}
+
+    <section class="w3l-contact-info-main" id="contact">
+        <div class="contact-sec	editContent">
+            <div class="container">
+                <div class="main-titles-head text-center">
+                    <h3 class="header-name editContent">
+                        Edit
+                    </h3>
+                    <hr>
+
+                </div>
+                <div class="map-content-9 mt-5">
+                    {{ form_start(form) }}
+                    <div class="twice">
+                        {{ form_widget(form.,{ }) }}
+                    </div>
+                    <div class="twice">
+                        {{ form_widget(form.,{ } }) }}
+                    </div>
+                    <div class="text-right">
+                        {{ form_widget(form.,{})}}
+                    </div>
+                    {{ form_end(form) }}
+                     <br>
+                     <a href="#">edit</a>
+                    {#{{ path('app_faculte_edit', {'id': pet.id}) }}#}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
