@@ -11,6 +11,14 @@
                     <h3 class="header-name editContent">
                         List
                     </h3>
+                    {% for message in app.flashes('notice') %}
+                        <div class="alert alert-dismissible alert-warning" id="alert">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <h4 class="alert-heading">Warning!</h4>
+                            <p class="mb-0">{{ message }}</p>
+                        </div>
+                    {% endfor %}
+
                     <table class="table list_pets">
                         <thead>
                         <tr>
